@@ -2,11 +2,13 @@ import React from 'react';
 import HeroSlider from './HeroSlider';
 import Review from './Review';
 import Query from './Query';
+import TopFood from './TopFood';
 
 const Home = () => {
     return (
         <div>
             <HeroSlider></HeroSlider>
+            <TopFood></TopFood>
             <Review></Review>
             <Query></Query>
         </div>
