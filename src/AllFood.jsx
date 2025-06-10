@@ -1,33 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { AiFillLike } from "react-icons/ai";
 import { Link } from 'react-router';
 import { Typewriter } from 'react-simple-typewriter'
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip } from 'react-tooltip'
+import { AiFillLike } from 'react-icons/ai';
 
 
-const TopFood = () => {
 
-const [top,setTop]=useState([]);
+const AllFood = () => {
+    
+    const [all,setAll]=useState([]);
+    
+    
+        useEffect(()=>{
+            fetch('http://localhost:3000/allfoods')
+            .then(res => res.json())
+        .then(data => {
+          
+          setAll(data)
+        });
+    },[]);
+    console.log(all)
 
 
-    useEffect(()=>{
-        fetch('http://localhost:3000/tops')
-        .then(res => res.json())
-    .then(data => {
-      
-      setTop(data)
-    });
-},[]);
 
 
     return (
         <>
-        <div className='bg-gray-300 w-11/12 mx-auto mt-3 rounded-lg'>
+            <div className='bg-gray-300 w-11/12 mx-auto mt-3 rounded-lg'>
           {/* <h2 className="text-5xl pt-10 font-bold my-4 text-center text-purple-700">Top Recipes</h2> */}
 <div className="text-5xl pt-10 my-4 text-center text-purple-700 font-bold">
       <Typewriter
-        words={['Top Food', 'Welcome to Top Food!', 'Top Food']}
+        words={['All Food', 'Welcome to All Food!', 'All Food']}
         loop={5}
         cursor
         cursorStyle='|'
@@ -40,7 +44,7 @@ const [top,setTop]=useState([]);
 
     <div className='grid grid-cols-3 pl-14  gap-y-5 py-5'>
         {
-        top.map(topCard =>(
+        all.map(topCard =>(
 
   
     <div key={topCard._id} className="card bg-base-100 w-98 h-[90%]  shadow-sm ">
@@ -52,12 +56,12 @@ const [top,setTop]=useState([]);
   <div className="card-body ">
     <h2 className="card-title text-amber-900 text-2xl font-bold">
       {topCard.name}
-      <div className="badge badge-secondary">TOP</div>
+      <div className="badge badge-secondary">Delicious</div>
     </h2>
     <p className=' text-xl'> {topCard.description}</p>
     <div className="card-actions justify-between mt-2">
 
-      
+     
 
       <Link to={`/tops/${topCard._id}`}>
 
@@ -77,18 +81,10 @@ const [top,setTop]=useState([]);
     ))
     }
     </div>
-    <div className='text-center my-4 pb-6'>
-       <Link to={"/allfood"}>
-        <button 
-         data-tooltip-id="like-tooltip" 
-         data-tooltip-content="You can see details"
-        className='text-center p-6 btn btn-primary text-2xl'>See All</button>
-        <Tooltip id="like-tooltip"/>
-       </Link>
-    </div>
+   
         </div>
         </>
     );
 };
 
-export default TopFood;
+export default AllFood;
