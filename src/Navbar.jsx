@@ -2,9 +2,9 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-        <div className='w-11/12 mx-auto py-5'>
+        <div className='w-11/12 mx-auto py-5 rounded-2xl'>
 
-            <div className="navbar justify-between  bg-base-100 shadow-2xl">
+            <div className="navbar justify-between  bg-gray-300 shadow-2xl p-5">
 
                 <div >
 
