@@ -1,7 +1,20 @@
-import React from 'react';
-import { NavLink } from 'react-router';
+import React, { use } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router';
+import { AuthContext } from '../Context/AuthContext';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+    const navigate = useNavigate()
+      const {user,signOutUser} = use(AuthContext)
+
+      const handleSignOut = ()=>{
+  signOutUser()
+  .then(()=>{
+    navigate("/");
+      Swal.fire("please try again !");
+  })
+}
+
     return (
         <div className='w-11/12 mx-auto py-5 rounded-2xl'>
 
@@ -24,12 +37,16 @@ const Navbar = () => {
 
                 <div >
                     {/* IMAGE */}
-                    {/* <div className="dropdown dropdown-end">
+                  
+                       {
+    user ? <>
+    
+      <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img
                                     alt="Tailwind CSS Navbar component"
-                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                    src={user.photoURL || "https://i.ibb.co/YTjW3vF/default-avatar.png"}/>
                             </div>
                        
                         </div>
@@ -40,13 +57,24 @@ const Navbar = () => {
                             <li><a className='text-xl'>Add Food</a></li>
                             <li><a className='text-xl'>My Food</a></li>
                             <li><a className='text-xl'>My Orders</a></li>
-                            <li><a className='text-xl'>Log Out</a></li>
+                            <li><a onClick={handleSignOut } className='text-xl'>Log Out</a></li>
                         </ul>
-                    </div> */}
-                    <NavLink to={'/login'} className='ml-2 btn btn-success btn-outline'>Login</NavLink>
-                    <NavLink className='ml-2 btn btn-success btn-outline' to={'/register'}>Register</NavLink>
+                    </div>
+    </> : 
+    <>
+    <div className="navbar-end gap-2">
+   <NavLink to={"/register"}>
+     <button className="btn btn-success">Registration</button>
+   </NavLink>
+    <NavLink to={"/login"}>
+      <button className="btn btn-accent">Login</button>
+    </NavLink>
+  </div>
+    </>
+  }
+    
                 </div>
-              
+            
             </div>
               
         </div>
