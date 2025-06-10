@@ -9,6 +9,8 @@ import {
 import Root from './Root.jsx';
 import Home from './Home.jsx';
 import About from './About.jsx';
+import Register from './Register.jsx';
+import Login from './Login.jsx';
 
 
 
@@ -23,6 +25,12 @@ const router = createBrowserRouter([
 
       { path: "about",
        Component: About },
+
+      { path: "register",
+       Component: Register },
+
+      { path: "login",
+       Component: Login },
     
     
     
