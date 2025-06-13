@@ -56,7 +56,7 @@ const Navbar = () => {
                             
                          <NavLink className='text-xl' to={'/addfood'}>Add Food</NavLink>
                             {/* <li><a className='text-xl'>Add Food</a></li> */}
-                            <li><a className='text-xl'>My Food</a></li>
+                            <NavLink className='text-xl' to={'/myfood'}>My Food</NavLink>
                             <li><a className='text-xl'>My Orders</a></li>
                             <li><a onClick={handleSignOut } className='text-xl'>Log Out</a></li>
                         </ul>

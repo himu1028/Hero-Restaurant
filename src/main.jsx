@@ -15,6 +15,7 @@ import AuthProvider from '../Context/AuthProvider.jsx';
 import AllFood from './AllFood.jsx';
 import Details from './Details.jsx';
 import AddFood from './AddFood.jsx';
+import MyFood from './MyFood.jsx';
 // import AuthProvider from '../Context/AuthProvider.jsx';
 
 
@@ -45,10 +46,11 @@ const router = createBrowserRouter([
       loader: ({ params }) => fetch(`http://localhost:3000/allfoods/${params.id}`)
 
     },
-
-    
       { path: "addfood",
        Component: AddFood },
+
+      { path: "myfood",
+       Component: MyFood },
     
     
     
