@@ -59,7 +59,7 @@ const [top,setTop]=useState([]);
 
       
 
-      <Link to={`/tops/${topCard._id}`}>
+      <Link to={`/allfoods/${topCard._id}`}>
 
       <button 
         data-tooltip-id="like-tooltip" 
