@@ -17,8 +17,6 @@ const price = e.target.price.value
 const quantity = e.target.quantity.value
 const categoryInputs = e.target.querySelectorAll('input[name="category"]:checked');
   const category = Array.from(categoryInputs).map(input => input.value);
-
-
 const form = {name,image,description,origin,price,quantity,category,email}
 
 

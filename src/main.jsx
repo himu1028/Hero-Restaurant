@@ -16,6 +16,8 @@ import AllFood from './AllFood.jsx';
 import Details from './Details.jsx';
 import AddFood from './AddFood.jsx';
 import MyFood from './MyFood.jsx';
+import PurchaseForm from './PurchaseForm.jsx';
+import MyOrder from './MyOrder.jsx';
 // import AuthProvider from '../Context/AuthProvider.jsx';
 
 
@@ -51,6 +53,12 @@ const router = createBrowserRouter([
 
       { path: "myfood",
        Component: MyFood },
+
+      { path: "myorder",
+       Component: MyOrder },
+
+      { path: "purchase/:id",
+       Component: PurchaseForm },
     
     
     

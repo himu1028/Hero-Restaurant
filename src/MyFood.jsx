@@ -35,35 +35,43 @@ const MyFood = () => {
   };
 
 //   Update
+ const handleUpdate = async (e) => {
+    e.preventDefault();
+    const name = e.target.name.value
+const image = e.target.image.value
+const description = e.target.description.value
+const origin = e.target.origin.value
+const price = e.target.price.value
+const quantity = e.target.quantity.value
+const categoryInputs = e.target.querySelectorAll('input[name="category"]:checked');
+  const category = Array.from(categoryInputs).map(input => input.value);
+const updatedFood= {name,image,description,origin,price,quantity,category}
+    // const form = e.target;
+    // const updatedRecipe = {
+    //   image: form.image.value,
+    //   title: form.title.value,
+    //   ingredients: form.ingredients.value,
+    //   instruction: form.instruction.value,
+    //   cuisine: form.cuisine.value,
+    //   time: form.time.value,
+    // };
 
-//   const handleUpdate = async (e) => {
-//     e.preventDefault();
-//     const form = e.target;
-//     const updatedFood = {
-//       image: form.image.value,
-//       title: form.title.value,
-//       ingredients: form.ingredients.value,
-//       instruction: form.instruction.value,
-//       cuisine: form.cuisine.value,
-//       time: form.time.value,
-//     };
+    const res = await fetch(`http://localhost:3000/myfoods/${selectedFood._id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updatedFood)
+    });
 
-//     const res = await fetch(`http://localhost:3000/allfoods/{selectedFood._id}`, {
-//       method: 'PUT',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(updatedFood)
-//     });
-
-//     const data = await res.json();
-//     if (data.modifiedCount > 0) {
-//       setFoods(prev =>
-//         prev.map(food =>
-//           food._id === selectedFood._id ? { ...food, ...updatedFood } : food
-//         )
-//       );
-//       document.getElementById('my_modal_4').close();
-//     }
-//   };
+    const data = await res.json();
+    if (data.modifiedCount > 0) {
+      setFoods(prev =>
+        prev.map(food =>
+          food._id === selectedFood._id ? { ...food, ...updatedFood } : food
+        )
+      );
+      document.getElementById('my_modal_4').close();
+    }
+  };
 
   return (
     <>
@@ -96,10 +104,7 @@ const MyFood = () => {
                 <p className=' text-xl'><span className='font-bold'>Available Quantity:</span>{food.quantity}</p>
 
                 <div className="card-actions justify-between mt-2">
-                  <button 
-                   data-tooltip-id="like-tooltip" 
-      data-tooltip-content="Total Likes"
-                  className="badge font-bold cursor-pointer text-3xl mt-1"><AiFillLike />{food.likes}</button>
+            
                    <Tooltip id="like-tooltip"/>
 
                   <button 
@@ -129,34 +134,50 @@ const MyFood = () => {
       </div>
 
       {/* Update Modal */}
-      {/* <dialog id="my_modal_4" className="modal">
+      <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <form onSubmit={handleUpdate} className="space-y-4">
-            <h2 className="text-2xl font-bold mb-6 text-center">Update Recipe</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">Update Your Food</h2>
 
-            <label className="block font-semibold mb-1">Image URL</label>
+            <label className="block font-semibold mb-1">Food Name</label>
+            <input className="input input-bordered w-full" name="name" placeholder="Food name" defaultValue={selectedFood?.name} />
+
+            <label className="block font-semibold mb-1">Image</label>
             <input className="input input-bordered w-full" name="image" placeholder="Image URL" defaultValue={selectedFood?.image} />
 
-<label className="block font-semibold mb-1">Title</label>
-            <input className="input input-bordered w-full" name="title" placeholder="Title" defaultValue={selectedFood?.title} />
+<label className="block font-semibold mb-1">Description</label>
+       <textarea className="textarea textarea-bordered w-full" name="description" placeholder="Description" defaultValue={selectedFood?.description}></textarea>
 
-<label className="block font-semibold mb-1">Ingredients</label>
-       <textarea className="textarea textarea-bordered w-full" name="ingredients" placeholder="Ingredients" defaultValue={selectedFood?.ingredients}></textarea>
-
-<label className="block font-semibold mb-1">Instruction</label>
-            <textarea className="textarea textarea-bordered w-full" name="instruction" placeholder="Instructions" defaultValue={selectedFood?.instruction}></textarea>
-
-<label className="block font-semibold mb-1">Cuisine</label>
-            <select name="cuisine" className="select select-bordered w-full" defaultValue={selectedFood?.cuisine}>
-              <option>Italian</option>
-              <option>Mexican</option>
-              <option>Indian</option>
-              <option>Chinese</option>
-              <option>Others</option>
+       <label className="block font-semibold mb-1">Origin</label>
+            <select name="origin" className="select select-bordered w-full" defaultValue={selectedFood?.origin}>
+                 <option>India</option>
+            <option>Bangladesh</option>
+            <option>USA</option>
+            <option>China</option>
+            <option>UK</option>
+            <option>Italy</option>
+            <option>Turkey</option>
+            <option>Mixed</option>
             </select>
 
-<label className="block font-semibold mb-1">Preparation Time</label>
-            <input className="input input-bordered w-full" type="number" name="time" placeholder="Time (minutes)" defaultValue={selectedFood?.time} />
+            
+<label className="block font-semibold mb-1">Price</label>
+            <input className="input input-bordered w-full" type="number" name="price" placeholder="Price" defaultValue={selectedFood?.price} />
+
+<label className="block font-semibold mb-1">Quantity</label>
+            <input className="input input-bordered w-full" type="number" name="quantity" placeholder="Quantity" defaultValue={selectedFood?.quantity} />
+
+           
+          
+            <label name='category2' className="block font-semibold mb-1">Categories</label>
+          
+
+            {['BBQ', 'Fast Food', 'Street Food', 'Curry', 'Rice','Snacks','Dessert','Middle Eastern'].map(cat => (
+              <label key={cat} className="flex items-center gap-2">
+                <input type="checkbox" value={cat} name='category' className="checkbox" />
+                {cat}
+              </label>
+            ))}
 
             <div className="text-center">
               <button type="submit" className="btn btn-primary w-full">Update Recipe</button>
@@ -169,7 +190,7 @@ const MyFood = () => {
             </form>
           </div>
         </div>
-      </dialog> */}
+      </dialog>
      </section>
     </>
   );

@@ -39,8 +39,8 @@ price }</h3>
 
 purchaseCount }</h3>
 
-<Link className='btn btn-success font-bold mt-4'>
-Purchase This
+<Link to={`/purchase/${food._id}`} className='btn btn-success font-bold mt-4'>
+  Purchase This
 </Link>
    
 
