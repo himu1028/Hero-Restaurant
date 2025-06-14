@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router';
 import { AiFillLike } from "react-icons/ai";
+import { AuthContext } from '../Context/AuthContext';
 const Details = () => {
-
+   
  const food = useLoaderData()
- console.log(food)
-  
 
+
+  
+         
 
 
     return (
@@ -26,7 +28,7 @@ purchaseCount})</span> people already purchase this recipe
       <h3 className="text-xl font-semibold mt-4">Category:{food.category }</h3>
       
 
-      <h3 className="text-xl font-semibold mt-4">Origin:{food.origin }</h3>
+      <h3 className="text-xl font-semibold mt-4">Origin:{food?.origin }</h3>
 
       <h3 className="text-xl font-semibold mt-4">Available 
 quantity:{food.

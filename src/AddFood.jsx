@@ -2,6 +2,8 @@ import React, { use } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
 import { Navigate } from 'react-router';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const AddFood = () => {
 const { user} = use(AuthContext)
@@ -9,6 +11,8 @@ const email =user?.email
 
 const handleAdd = e => {
   e.preventDefault();
+
+
 const name = e.target.name.value
 const image = e.target.image.value
 const description = e.target.description.value
@@ -17,7 +21,7 @@ const price = e.target.price.value
 const quantity = e.target.quantity.value
 const categoryInputs = e.target.querySelectorAll('input[name="category"]:checked');
   const category = Array.from(categoryInputs).map(input => input.value);
-const form = {name,image,description,origin,price,quantity,category,email}
+const form = {name,image,description,origin,price,quantity,category,email,_id:uuidv4()}
 
 
 
