@@ -11,7 +11,7 @@ const Navbar = () => {
   signOutUser()
   .then(()=>{
     navigate("/");
-      Swal.fire("please try again !");
+      Swal.fire("Successfully Logout !");
   })
 }
 
@@ -27,9 +27,9 @@ const Navbar = () => {
 
 <div >
     
-<NavLink className='text-lg p-2 bg-gray-100 hover:bg-amber-200'>Home</NavLink>
-<NavLink className='text-lg mx-2 p-2 bg-gray-100 hover:bg-amber-200'>All Foods</NavLink>
-<NavLink className='text-lg p-2 bg-gray-100 hover:bg-amber-200'>Gallery</NavLink>
+<NavLink to={'/'} className='text-lg p-2 bg-gray-100 hover:bg-amber-200'>Home</NavLink>
+<NavLink to={'/allfood'} className='text-lg mx-2 p-2 bg-gray-100 hover:bg-amber-200'>All Foods</NavLink>
+<NavLink to={'/gallery'} className='text-lg p-2 bg-gray-100 hover:bg-amber-200'>Gallery</NavLink>
 
 
 
@@ -57,7 +57,8 @@ const Navbar = () => {
                          <NavLink className='text-xl' to={'/addfood'}>Add Food</NavLink>
                             {/* <li><a className='text-xl'>Add Food</a></li> */}
                             <NavLink className='text-xl' to={'/myfood'}>My Food</NavLink>
-                            <li><a className='text-xl'>My Orders</a></li>
+                            <NavLink to={'/myorder'} className='text-xl'>My Orders</NavLink>
+                            
                             <li><a onClick={handleSignOut } className='text-xl'>Log Out</a></li>
                         </ul>
                     </div>
