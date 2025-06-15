@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 const Review = () => {
 
     const handleReview = ()=>{
-   Swal.fire("Thank You !");
+ Swal.fire("Thank You!");
     }
     return (
         <>

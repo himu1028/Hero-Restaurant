@@ -5,6 +5,20 @@ const MyOrder = () => {
   const [myOrder, setMyOrder] = useState([]);
   const { user } = useContext(AuthContext); 
 
+  //   Handle Delete
+  const handleDelete = async (id) => {
+    const res = await fetch(`http://localhost:3000/orders/${id}`, {
+      method: 'DELETE',
+    });
+    const data = await res.json();
+    console.log(data);
+
+    if (data.deletedCount > 0) {
+  setMyOrder(prev => prev.filter(order => order._id.toString() !== id.toString()));
+
+    }
+  };
+
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -52,6 +66,7 @@ const MyOrder = () => {
                     <th className="px-4 py-2 border">Price</th>
                     <th className="px-4 py-2 border">Quantity</th>
                     <th className="px-4 py-2 border">Date</th>
+                    <th className="px-4 py-2 border">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -65,6 +80,7 @@ const MyOrder = () => {
                         <td className="px-4 py-2 border">
                           {new Date(order.buyingDate).toLocaleDateString()}
                         </td>
+                        <td className="px-4 py-2 border"><button onClick={() => handleDelete(order._id)}  className='btn '>Delete</button></td>
                       </tr>
                     ))
                   }

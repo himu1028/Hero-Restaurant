@@ -63,7 +63,7 @@ const HeroSlider = () => {
               <div className="text-center text-white px-4">
                 <h2 className="text-3xl md:text-5xl font-bold mb-4">Connect With Us</h2>
                 <p className="text-2xl md:text-xl">Stay ahead with our Hero Restaurant.</p>
-                 <Link className='btn cursor-pointer btn-accent mt-3 hover:bg-amber-200'>All Foods</Link>
+                 <Link to={'/allfood'} className='btn cursor-pointer btn-accent mt-3 hover:bg-amber-200'>All Foods</Link>
               </div>
             </div>
           </div>

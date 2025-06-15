@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
-import { Link, useNavigate, useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 
 const PurchaseForm = () => {
-    const navigate = useNavigate();
+ 
     const { user } = useContext(AuthContext);
     const { id: foodId } = useParams();
     const today = new Date().toLocaleDateString();
@@ -61,7 +61,7 @@ const PurchaseForm = () => {
             .then(data => {
                 Swal.fire('Purchase Successful!', 'Your order has been placed.', 'success');
                 form.reset();
-                navigate("/myorder");
+             
             });
     };
 

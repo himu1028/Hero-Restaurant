@@ -10,10 +10,11 @@ import { AuthContext } from './AuthContext';
 
 const AuthProvider = ({children}) => {
     const [user,setUser]=useState(null);
-
+const [loading, setLoading] = useState(true)
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth,currentUser=>{
             setUser(currentUser)
+            setLoading(false);
         })
         return()=>{
             unSubscribe();
@@ -48,6 +49,7 @@ const userInfo = {
     user,
     signOutUser,
     googleSignIn,
+    loading,
 }
 
 

@@ -47,24 +47,24 @@ const router = createBrowserRouter([
        Component: AllFood },
 
        { path: "/allfoods/:id",
-      Component: Details,
+      element: <PrivateRoute><Details></Details></PrivateRoute>,
       loader: ({ params }) => fetch(`http://localhost:3000/allfoods/${params.id}`)
 
     },
       { path: "addfood",
-       Component: AddFood },
+       element: <PrivateRoute><AddFood></AddFood></PrivateRoute> },
 
       { path: "myfood",
-       Component: MyFood },
+       element:<PrivateRoute><MyFood></MyFood></PrivateRoute> },
 
       { path: "myorder",
-       Component: MyOrder },
+       element: <PrivateRoute><MyOrder></MyOrder></PrivateRoute> },
 
       { path: "gallery",
        element:<GalleryPage></GalleryPage>},
 
       { path: "purchase/:id",
-       Component: PurchaseForm },
+       element:<PrivateRoute><PurchaseForm></PurchaseForm></PrivateRoute> },
     
     
     
