@@ -19,6 +19,8 @@ import MyFood from './MyFood.jsx';
 import PurchaseForm from './PurchaseForm.jsx';
 import MyOrder from './MyOrder.jsx';
 import GalleryPage from './GalleryPage.jsx';
+
+import PrivateRoute from './Routs/PrivateRoute.jsx';
 // import AuthProvider from '../Context/AuthProvider.jsx';
 
 
@@ -59,7 +61,7 @@ const router = createBrowserRouter([
        Component: MyOrder },
 
       { path: "gallery",
-       Component:GalleryPage},
+       element:<GalleryPage></GalleryPage>},
 
       { path: "purchase/:id",
        Component: PurchaseForm },

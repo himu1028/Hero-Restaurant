@@ -39,7 +39,7 @@ price }</h3>
 
       <h3 className="text-xl font-semibold mt-4">Purchase Count:{food.
 
-purchaseCount }</h3>
+purchaseCount || 0 }</h3>
 
 <Link to={`/purchase/${food._id}`} className='btn btn-success font-bold mt-4'>
   Purchase This
