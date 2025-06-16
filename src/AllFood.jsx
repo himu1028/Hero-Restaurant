@@ -21,10 +21,11 @@ const AllFood = () => {
 
   return (
     <>
+    <div    >
       <div 
        
       className="w-11/12 mx-auto mt-6 flex justify-center"
-      style={{ backgroundImage: `url(${imageUrl})`}}
+
       >
         <label className="input w-full max-w-md flex items-center gap-2 bg-white shadow px-4 py-2 rounded-md">
           <svg
@@ -53,7 +54,9 @@ const AllFood = () => {
         </label>
       </div>
 
-      <div className="bg-gray-300 w-11/12 mx-auto mt-6 rounded-lg">
+      <div 
+         style={{ backgroundImage: `url(${imageUrl})`}}
+      className=" w-11/12 mx-auto mt-6 rounded-lg">
         <div className="text-3xl md:text-5xl pt-10 my-4 text-center text-purple-700 font-bold">
           <Typewriter
             words={['All Food', 'Welcome to All Food!', 'All Food']}
@@ -101,6 +104,7 @@ const AllFood = () => {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </>
   );
