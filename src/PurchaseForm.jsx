@@ -1,39 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
-import { Link, useParams } from 'react-router';
+import { Link, useParams } from 'react-router'; // untouched
 
 const PurchaseForm = () => {
- 
     const { user } = useContext(AuthContext);
     const { id: foodId } = useParams();
     const today = new Date().toLocaleDateString();
 
     const [food, setFood] = useState(null);
- const [purchase,setPurchase]=useState( 0)
 
-
-     useEffect(() => {
-    fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
-      headers: {
-        authorization: `Bearer ${user?.accessToken}`
-      }
-    })
-            .then(res => res.json())
-            .then(data => setFood(data));
-    },[foodId,user?.accessToken]);
-
-    const handlePurchases =async ()=>{
-
-
-await fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
-      method: 'PATCH',
-      headers: {'content-type':'application/json'},
-    });
-    setPurchase(prev => prev + 1)
-
-
-}
+    useEffect(() => {
+        fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
+            headers: {
+                authorization: `Bearer ${user?.accessToken}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => setFood(data));
+    }, [foodId, user?.accessToken]);
 
     const handlePurchase = (e) => {
         e.preventDefault();
@@ -46,15 +31,13 @@ await fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
         const buyingDate = Date.now();
         const readableDate = new Date(buyingDate).toLocaleString();
 
-        // quantity
         if (quantity > food.quantity) {
             return Swal.fire('Error', `You cannot buy more than available quantity (${food.quantity})`, 'error');
         }
-// email
-         if (user?.email === food?.email) {
-      return Swal.fire('Error', 'You cannot purchase your own added food item.', 'error');
-    }
 
+        if (user?.email === food?.email) {
+            return Swal.fire('Error', 'You cannot purchase your own added food item.', 'error');
+        }
 
         const orderData = {
             foodId,
@@ -67,6 +50,7 @@ await fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
             readableDate,
         };
 
+        // POST 
         fetch('https://restaurant-hero-eta.vercel.app/orders', {
             method: 'POST',
             headers: {
@@ -75,12 +59,22 @@ await fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
             },
             body: JSON.stringify(orderData)
         })
+        .then(res => res.json())
+        .then(data => {
+            // PATCH
+            fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    authorization: `Bearer ${user?.accessToken}`
+                }
+            })
             .then(res => res.json())
-            .then(data => {
+            .then(() => {
                 Swal.fire('Purchase Successful!', 'Your order has been placed.', 'success');
                 form.reset();
-             
             });
+        });
     };
 
     return (
@@ -113,7 +107,6 @@ await fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
                         name='quantity' 
                         className="border-2 w-full" 
                         min="1" 
-                        
                         required 
                         disabled={food?.quantity === 0}
                     />
@@ -134,7 +127,7 @@ await fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
                 </div>
 
                 <div className="text-center pt-4">
-                    <button onClick={handlePurchases}
+                    <button 
                         className="btn btn-primary w-full"
                         disabled={food?.quantity === 0 || user?.email === food?.email}
                     >

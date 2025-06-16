@@ -18,12 +18,13 @@ const image = e.target.image.value
 const description = e.target.description.value
 const origin = e.target.origin.value
 const price = e.target.price.value
+const purchaseCount = parseInt(0)
 const quantity = e.target.quantity.value
 const categoryInputs = e.target.querySelectorAll('input[name="category"]:checked');
   const category = Array.from(categoryInputs).map(input => input.value);
 
   const _id =Math.floor(Math.random()*1000000000);
-const form = {name,image,description,origin,price,quantity,category,email,_id}
+const form = {name,purchaseCount,image,description,origin,price,quantity,category,email,_id}
 
 
 
