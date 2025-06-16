@@ -7,7 +7,7 @@ const MyOrder = () => {
 
   //   Handle Delete
   const handleDelete = async (id) => {
-    const res = await fetch(`http://localhost:3000/orders/${id}`, {
+    const res = await fetch(`https://restaurant-hero-eta.vercel.app/orders/${id}`, {
       method: 'DELETE',
     });
     const data = await res.json();
@@ -22,7 +22,7 @@ const MyOrder = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/orders?email=${user?.email}`, {
+        const res = await fetch(`https://restaurant-hero-eta.vercel.app/orders?email=${user?.email}`, {
           headers: {
             authorization: `Bearer ${user?.accessToken}`
           }

@@ -4,9 +4,7 @@ import { AiFillLike } from "react-icons/ai";
 import { AuthContext } from '../Context/AuthContext';
 const Details = () => {
    
- const food = useLoaderData()
-
-
+  const food = useLoaderData()
   
          
 
@@ -14,7 +12,7 @@ const Details = () => {
     return (
         <>
    <div className="w-10/12 mx-auto mt-10 p-6 bg-white shadow-2xl">
-      <img src={food.image}  alt={food.name} className="w-full h-60 object-cover rounded mb-4" />
+      <img src={food?.image}  alt={food.name} className="w-full h-60 object-cover rounded mb-4" />
 
       <h2 className="text-3xl font-bold text-purple-700 mb-2">{food.name}</h2>
 

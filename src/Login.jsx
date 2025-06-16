@@ -5,8 +5,8 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
 
 const Login = () => {
-const { SignInUser,user,googleSignIn} = use(AuthContext)
-console.log(user)
+const { SignInUser,googleSignIn} = use(AuthContext)
+
 const navigate = useNavigate()
 
 const handleGoogle = () =>{

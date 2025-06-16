@@ -9,12 +9,16 @@ const MyFood = () => {
   const { user } = use(AuthContext);
   const [foods, setFoods] = useState([]);
   const [selectedFood, setSelectedFood] = useState(null); 
-  console.log(foods);
+  
 
 //   Load Data
   useEffect(() => {
     const myRecipes = async () => {
-      const res = await fetch(`http://localhost:3000/myfoods?email=${user?.email}`);
+      const res = await fetch(`https://restaurant-hero-eta.vercel.app/myfoods?email=${user?.email}`, {
+          headers: {
+            authorization: `Bearer ${user?.accessToken}`
+          }
+        });
       const data = await res.json();
       setFoods(data);
     };
@@ -23,7 +27,7 @@ const MyFood = () => {
 
 //   Handle Delete
   const handleDelete = async (id) => {
-    const res = await fetch(`http://localhost:3000/myfoods/${id}`, {
+    const res = await fetch(`https://restaurant-hero-eta.vercel.app/myfoods/${id}`, {
       method: 'DELETE',
     });
     const data = await res.json();
@@ -56,7 +60,7 @@ const updatedFood= {name,image,description,origin,price,quantity,category}
     //   time: form.time.value,
     // };
 
-    const res = await fetch(`http://localhost:3000/myfoods/${selectedFood._id}`, {
+    const res = await fetch(`https://restaurant-hero-eta.vercel.app/myfoods/${selectedFood._id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedFood)

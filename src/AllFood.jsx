@@ -9,8 +9,10 @@ const AllFood = () => {
   const [search, setSearch] = useState('');
   const [all, setAll] = useState([]);
 
+  const imageUrl = 'https://i.ibb.co/7xBX8FtS/bgggg.jpg';
+
   useEffect(() => {
-    fetch(`http://localhost:3000/allfoods?searchParams=${search}`)
+    fetch(`https://restaurant-hero-eta.vercel.app/allfoods?searchParams=${search}`)
       .then(res => res.json())
       .then(data => {
         setAll(data);
@@ -19,7 +21,11 @@ const AllFood = () => {
 
   return (
     <>
-      <div className="w-11/12 mx-auto mt-6 flex justify-center">
+      <div 
+       
+      className="w-11/12 mx-auto mt-6 flex justify-center"
+      style={{ backgroundImage: `url(${imageUrl})`}}
+      >
         <label className="input w-full max-w-md flex items-center gap-2 bg-white shadow px-4 py-2 rounded-md">
           <svg
             className="h-5 w-5 opacity-50"

@@ -53,7 +53,7 @@ const handleRegister = (e) => {
   createUser(email, password)
 .then((userCredential)=>{
   const user = userCredential.user;
-console.log(user)
+
 })
 
     .then((result) => {

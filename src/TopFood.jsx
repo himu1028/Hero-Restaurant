@@ -9,7 +9,7 @@ const TopFood = () => {
   const [top, setTop] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/tops')
+    fetch('https://restaurant-hero-eta.vercel.app/tops')
       .then(res => res.json())
       .then(data => {
         setTop(data)

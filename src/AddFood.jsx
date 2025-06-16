@@ -27,12 +27,14 @@ const form = {name,image,description,origin,price,quantity,category,email,_id}
 
 
 
-console.log(form)
+
 // Send data to db
-fetch('http://localhost:3000/allfoods',{
+fetch('https://restaurant-hero-eta.vercel.app/allfoods', {
   method:'POST',
   headers:{
-    'content-type':'application/json'
+     
+    'content-type':'application/json',
+    authorization: `Bearer ${user?.accessToken}` 
   },
   body:JSON.stringify(form)
 })

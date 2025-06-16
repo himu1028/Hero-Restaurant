@@ -11,11 +11,15 @@ const PurchaseForm = () => {
 
     const [food, setFood] = useState(null);
 
-    useEffect(() => {
-        fetch(`http://localhost:3000/allfoods/${foodId}`)
+     useEffect(() => {
+    fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
+      headers: {
+        authorization: `Bearer ${user?.accessToken}`
+      }
+    })
             .then(res => res.json())
             .then(data => setFood(data));
-    }, [foodId]);
+    },[foodId,user?.accessToken]);
 
     const handlePurchase = (e) => {
         e.preventDefault();
@@ -33,11 +37,10 @@ const PurchaseForm = () => {
             return Swal.fire('Error', `You cannot buy more than available quantity (${food.quantity})`, 'error');
         }
 // email
-        {user?.email === food?.email && (
-    <div className="text-red-500 font-bold text-center mb-4">
-        You cannot purchase your own added food item.
-    </div>
-)}
+         if (user?.email === food?.email) {
+      return Swal.fire('Error', 'You cannot purchase your own added food item.', 'error');
+    }
+
 
         const orderData = {
             foodId,
@@ -50,10 +53,11 @@ const PurchaseForm = () => {
             readableDate,
         };
 
-        fetch('http://localhost:3000/orders', {
+        fetch('https://restaurant-hero-eta.vercel.app/orders', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${user?.accessToken}`
             },
             body: JSON.stringify(orderData)
         })

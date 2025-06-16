@@ -47,12 +47,12 @@ const router = createBrowserRouter([
        Component: AllFood },
 
        { path: "/allfoods/:id",
-      element: <PrivateRoute><Details></Details></PrivateRoute>,
-      loader: ({ params }) => fetch(`http://localhost:3000/allfoods/${params.id}`)
+      element: <Details></Details>,
+      loader: ({ params }) => fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${params.id}`)
 
     },
       { path: "addfood",
-       element: <PrivateRoute><AddFood></AddFood></PrivateRoute> },
+       element:<PrivateRoute><AddFood></AddFood></PrivateRoute>  },
 
       { path: "myfood",
        element:<PrivateRoute><MyFood></MyFood></PrivateRoute> },
