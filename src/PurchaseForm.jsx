@@ -10,6 +10,8 @@ const PurchaseForm = () => {
     const today = new Date().toLocaleDateString();
 
     const [food, setFood] = useState(null);
+ const [purchase,setPurchase]=useState(food.purchaseCount || 0)
+
 
      useEffect(() => {
     fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
@@ -20,6 +22,18 @@ const PurchaseForm = () => {
             .then(res => res.json())
             .then(data => setFood(data));
     },[foodId,user?.accessToken]);
+
+    const handlePurchases =async ()=>{
+
+
+await fetch(`https://restaurant-hero-eta.vercel.app/allfoods/${foodId}`, {
+      method: 'PATCH',
+      headers: {'content-type':'application/json'},
+    });
+    setPurchase(prev => prev + 1)
+
+
+}
 
     const handlePurchase = (e) => {
         e.preventDefault();
@@ -120,7 +134,7 @@ const PurchaseForm = () => {
                 </div>
 
                 <div className="text-center pt-4">
-                    <button
+                    <button onClick={handlePurchases}
                         className="btn btn-primary w-full"
                         disabled={food?.quantity === 0 || user?.email === food?.email}
                     >
