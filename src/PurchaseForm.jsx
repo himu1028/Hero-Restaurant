@@ -10,7 +10,7 @@ const PurchaseForm = () => {
     const today = new Date().toLocaleDateString();
 
     const [food, setFood] = useState(null);
- const [purchase,setPurchase]=useState(food?.purchaseCount || 0)
+ const [purchase,setPurchase]=useState( 0)
 
 
      useEffect(() => {
