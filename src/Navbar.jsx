@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
 
+
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, signOutUser } = use(AuthContext);
@@ -15,11 +16,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto py-5 rounded-2xl">
-      <div className="navbar bg-gray-300 shadow-xl p-5 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+    <div className="w-11/12  sticky top-0 z-50 mx-auto  rounded-2xl">
+      <div className="navbar bg-gray-300 py-4  flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
         {/* Logo */}
         <div className="flex items-center justify-between w-full md:w-auto">
-          <a className="btn hover:bg-amber-200 text-xl">
+          <a className="btn  hover:bg-gray-400 text-xl">
             <span className="text-2xl font-bold text-sky-400">
               <i>Hero</i>
             </span>
@@ -31,19 +32,19 @@ const Navbar = () => {
         <div className="flex flex-col md:flex-row items-center gap-2">
           <NavLink
             to={"/"}
-            className="text-lg p-2 bg-gray-100 hover:bg-amber-200"
+            className=" p-1 font-semibold  hover:bg-gray-400"
           >
             Home
           </NavLink>
           <NavLink
             to={"/allfood"}
-            className="text-lg p-2 bg-gray-100 hover:bg-amber-200"
+            className=" p-1 font-semibold hover:bg-gray-400"
           >
             All Foods
           </NavLink>
           <NavLink
             to={"/gallery"}
-            className="text-lg p-2 bg-gray-100 hover:bg-amber-200"
+            className=" p-1 font-semibold hover:bg-gray-400"
           >
             Gallery
           </NavLink>
@@ -92,12 +93,12 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <div className="navbar-end gap-2 flex flex-col md:flex-row">
+              <div className=" gap-2 flex flex-col md:flex-row">
                 <NavLink to={"/register"}>
-                  <button className="btn btn-success">Registration</button>
+                  <button className="btn  text-sky-400  btn-outline">Registration</button>
                 </NavLink>
                 <NavLink to={"/login"}>
-                  <button className="btn btn-accent">Login</button>
+                  <button className="btn  text-sky-400 btn-outline">Login</button>
                 </NavLink>
               </div>
             </>
@@ -108,4 +109,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbar; 

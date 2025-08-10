@@ -21,6 +21,7 @@ import MyOrder from './MyOrder.jsx';
 import GalleryPage from './GalleryPage.jsx';
 
 import PrivateRoute from './Routs/PrivateRoute.jsx';
+import Error from './Error.jsx';
 // import AuthProvider from '../Context/AuthProvider.jsx';
 
 
@@ -42,6 +43,8 @@ const router = createBrowserRouter([
 
       { path: "login",
        Component: Login },
+      { path: "*",
+       Component: Error },
 
       { path: "allfood",
        Component: AllFood },

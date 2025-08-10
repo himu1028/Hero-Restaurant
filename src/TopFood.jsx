@@ -31,7 +31,7 @@ const TopFood = () => {
           />
         </div>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 py-5'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 py-5'>
           {
             top.map(topCard => (
               <div key={topCard._id} className="card bg-base-100 w-full h-full shadow-sm">

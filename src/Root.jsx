@@ -27,15 +27,15 @@ const Root = () => {
 
     return (
         <>
-         <div className=' w-0.5 mx-auto'>
+         {/* <div className=' w-0.5 mx-auto'>
           <button onClick={toggleTheme} className="btn btn-secondary w-8 h-8">
            <input type="checkbox" defaultChecked className="toggle toggle-success w-5 h-5" /> 
         </button>
-        </div>
+        </div> */}
 
 
         {/* Content */}
-<div > 
+<div className='bg-gray-300 ' > 
     <Navbar></Navbar>
 <Outlet></Outlet>
 <Footer></Footer>
