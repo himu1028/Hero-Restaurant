@@ -19,7 +19,7 @@ const TopFood = () => {
   return (
     <>
       <div className='bg-gray-300 w-11/12 mx-auto mt-3 rounded-lg'>
-        <div className="text-xl md:text-3xl pt-10 my-4 text-center text-blue-400 font-bold">
+        <div className="text-xl md:text-3xl pt-10 my-4 text-center text-sky-600 font-bold">
           <Typewriter
             words={['Top Food', 'Welcome to Top Food!', 'Top Food']}
             loop={5}

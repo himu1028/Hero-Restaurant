@@ -5,7 +5,7 @@ const Query = () => {
 
 {/* <h2 className='text-5xl text-purple-700 font-bold pb-10 text-center'>Know Your Querry About Support</h2> */}
 <div className='w-11/12 mx-auto'>
-    <div className="text-5xl pb-10 my-4 text-center text-purple-700 font-bold">
+    <div className="text-3xl pb-10 my-4 text-center text-sky-600 font-bold">
       <Typewriter
         words={['Know Your Querry About Support', 'Know Your Querry About Support', 'Know Your Querry About Support']}
         loop={5}
