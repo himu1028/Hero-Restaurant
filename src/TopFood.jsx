@@ -19,7 +19,7 @@ const TopFood = () => {
   return (
     <>
       <div className='bg-gray-300 w-11/12 mx-auto mt-3 rounded-lg'>
-        <div className="text-3xl md:text-5xl pt-10 my-4 text-center text-purple-700 font-bold">
+        <div className="text-xl md:text-3xl pt-10 my-4 text-center text-blue-400 font-bold">
           <Typewriter
             words={['Top Food', 'Welcome to Top Food!', 'Top Food']}
             loop={5}
@@ -31,7 +31,7 @@ const TopFood = () => {
           />
         </div>
 
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 py-5'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6  py-5'>
           {
             top.map(topCard => (
               <div key={topCard._id} className="card bg-base-100 w-full h-full shadow-sm">
