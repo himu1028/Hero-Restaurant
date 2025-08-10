@@ -27,11 +27,11 @@ const Root = () => {
 
     return (
         <>
-         {/* <div className=' w-0.5 mx-auto'>
-          <button onClick={toggleTheme} className="btn btn-secondary w-8 h-8">
-           <input type="checkbox" defaultChecked className="toggle toggle-success w-5 h-5" /> 
+         <div className=' w-0.5 mx-auto'>
+          <button onClick={toggleTheme} className="btn btn-secondary w-4 h-4">
+           <input type="checkbox" defaultChecked className="toggle toggle-success w-4 h-4" /> 
         </button>
-        </div> */}
+        </div>
 
 
         {/* Content */}

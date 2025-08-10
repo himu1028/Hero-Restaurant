@@ -125,7 +125,7 @@ fetch('https://restaurant-hero-eta.vercel.app/allfoods', {
       
         
         <div className="text-center pt-4">
-          <button className="btn btn-primary w-full">Add Item</button>
+          <button className="btn btn-accent w-full">Add Item</button>
         </div>
       </form>
     </div>

@@ -1,20 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillLike } from "react-icons/ai";
 import { Link } from 'react-router';
-import { Typewriter } from 'react-simple-typewriter'
-import 'react-tooltip/dist/react-tooltip.css'
-import { Tooltip } from 'react-tooltip'
+import { Typewriter } from 'react-simple-typewriter';
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
 
 const TopFood = () => {
   const [top, setTop] = useState([]);
+  const [loading, setLoading] = useState(true); // Spinner state
 
   useEffect(() => {
     fetch('https://restaurant-hero-eta.vercel.app/tops')
       .then(res => res.json())
       .then(data => {
-        setTop(data)
+        setTop(data);
+        setLoading(false); // Data loaded, stop spinner
       });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="w-16 h-16 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -49,7 +59,7 @@ const TopFood = () => {
                       <button
                         data-tooltip-id="like-tooltip"
                         data-tooltip-content="You can see details"
-                        className="font-bold cursor-pointer btn btn-accent">
+                        className="cursor-pointer btn btn-accent">
                         See Details
                       </button>
                       <Tooltip id="like-tooltip" />
@@ -66,7 +76,7 @@ const TopFood = () => {
             <button
               data-tooltip-id="like-tooltip"
               data-tooltip-content="You can see details"
-              className='p-4 md:p-6 btn btn-primary text-xl md:text-2xl'>
+              className='p-4 text-white md:p-6 btn bg-blue-600 text-xl md:text-2xl'>
               See All
             </button>
             <Tooltip id="like-tooltip" />
