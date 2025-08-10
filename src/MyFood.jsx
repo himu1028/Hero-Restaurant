@@ -9,7 +9,7 @@ const MyFood = () => {
   const { user } = useContext(AuthContext);
   const [foods, setFoods] = useState([]);
   const [selectedFood, setSelectedFood] = useState(null);
-  const [loading, setLoading] = useState(true); // spinner state
+  const [loading, setLoading] = useState(true); 
 
   // Load Data
   useEffect(() => {

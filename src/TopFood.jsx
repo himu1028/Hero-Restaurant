@@ -7,14 +7,14 @@ import { Tooltip } from 'react-tooltip';
 
 const TopFood = () => {
   const [top, setTop] = useState([]);
-  const [loading, setLoading] = useState(true); // Spinner state
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     fetch('https://restaurant-hero-eta.vercel.app/tops')
       .then(res => res.json())
       .then(data => {
         setTop(data);
-        setLoading(false); // Data loaded, stop spinner
+        setLoading(false); 
       });
   }, []);
 

@@ -3,7 +3,7 @@ import { AuthContext } from '../Context/AuthContext';
 
 const MyOrder = () => {
   const [myOrder, setMyOrder] = useState([]);
-  const [loading, setLoading] = useState(true); // Spinner state
+  const [loading, setLoading] = useState(true); 
   const { user } = useContext(AuthContext);
 
   // Handle Delete
@@ -22,7 +22,7 @@ const MyOrder = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        setLoading(true); // Start loading
+        setLoading(true); 
         const res = await fetch(`https://restaurant-hero-eta.vercel.app/orders?email=${user?.email}`, {
           headers: {
             authorization: `Bearer ${user?.accessToken}`
@@ -41,7 +41,7 @@ const MyOrder = () => {
         console.error("Fetch error:", err);
         setMyOrder([]);
       } finally {
-        setLoading(false); // Stop loading
+        setLoading(false); 
       }
     };
 

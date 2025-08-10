@@ -6,7 +6,7 @@ import { Tooltip } from 'react-tooltip';
 
 const AllFood = () => {
   const [search, setSearch] = useState('');
-  const [sort, setSort] = useState(''); // sort state যোগ
+  const [sort, setSort] = useState(''); 
   const [all, setAll] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -20,7 +20,7 @@ const AllFood = () => {
         setAll(data);
         setLoading(false);
       });
-  }, [search, sort]); // sort dependency যোগ
+  }, [search, sort]); 
 
   return (
     <>
