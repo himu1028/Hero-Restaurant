@@ -57,7 +57,7 @@ const AllFood = () => {
       <div 
          style={{ backgroundImage: `url(${imageUrl})`}}
       className=" w-11/12 mx-auto mt-6 rounded-lg">
-        <div className="text-3xl md:text-5xl pt-10 my-4 text-center text-purple-700 font-bold">
+        <div className="text-3xl md:text-3xl pt-10 my-4 text-center text-sky-600 font-bold">
           <Typewriter
             words={['All Food', 'Welcome to All Food!', 'All Food']}
             loop={5}

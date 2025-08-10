@@ -57,9 +57,9 @@ SignInUser(email,password)
         <>
        
        <h1 className='text-4xl bg-base-200 text-center mt-16 font-bold text-blue-500 w-11/12 mx-auto p-5'>Please Log In</h1>
-            <div className="hero bg-base-200 w-11/12 mx-auto mb-10 ">
+            <div className="hero w-11/12 bg-base-200  mx-auto mb-10 ">
  
-  <div className="hero-content flex-col lg:flex-row-reverse">
+  <div className=" flex-col lg:flex-row-reverse">
     <div className="card bg-base-100 w-full  shrink-0 shadow-2xl">
       <div className="card-body">
         <form onSubmit={handleLogIn} className="fieldset">
@@ -73,7 +73,7 @@ SignInUser(email,password)
             Please Register
           </Link>
             </h2></div>
-          <button className="btn btn-neutral mt-4">Login</button>
+          <button className="btn btn-success mt-4">Login</button>
           <div>
            
           </div>

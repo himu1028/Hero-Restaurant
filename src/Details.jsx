@@ -14,7 +14,7 @@ const Details = () => {
    <div className="w-10/12 mx-auto mt-10 p-6 bg-white shadow-2xl">
       <img src={food?.image}  alt={food.name} className="w-full h-60 object-cover rounded mb-4" />
 
-      <h2 className="text-3xl font-bold text-purple-700 mb-2">{food.name}</h2>
+      <h2 className="text-3xl font-bold text-sky-700 mb-2">{food.name}</h2>
 
       <p className='text-gray-500 py-2 text-2xl'>
         <span className='text-4xl '>({food.
